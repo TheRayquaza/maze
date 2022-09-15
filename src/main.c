@@ -20,7 +20,9 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
+#include "generator/generator.h"
 #include "tools/tools.h"
 #include "reader/reader.h"
 #include "solver/solver.h"
@@ -29,7 +31,14 @@ int main(int argc, char *argv[])
 {
     if (argc == 1)
     {
-        printf("Not available for now\n");
+        srand(time(NULL));
+
+        size_t rows = 0;
+        size_t cols = 0;
+         
+        char ** maze = generate_maze(&rows, &cols);
+        print_maze(maze, rows, cols);
+
         return EXIT_SUCCESS;
     }
     else if (argc == 2)

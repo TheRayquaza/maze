@@ -1,8 +1,8 @@
 CC = gcc
 CPPFLAGS = -MMD
-CFLAGS = -Wall -Werror -Wextra -O0 -std=c99 -g
+CFLAGS = -Wall -Werror -Wextra -O0 -std=c99 -g -fsanitize=address
 
-SRC= src/main.c src/reader/reader.c src/solver/solver.c src/tools/tools.c 
+SRC= src/main.c src/reader/reader.c src/solver/solver.c src/tools/tools.c src/generator/generator.c 
 OBJ= ${SRC:.c=.o}
 DEP= ${SRC:.c=.d}
 

@@ -157,10 +157,9 @@ char ** solve_rec(char ** maze, size_t rows, size_t cols, size_t row, size_t col
             maze_down[row+1][col] = maze_down[row+1][col] == 'x' ? 'x' : 'o';
 
             char ** result = solve_rec(maze_down, rows, cols, row+1, col);
+            free(maze_down);
             if (result != NULL)
                 return result;
-            else
-                free(maze_down);
         }
 
         if (row > 0 && (maze[row-1][col] == ' ' || maze[row-1][col] == 'x'))
@@ -169,10 +168,9 @@ char ** solve_rec(char ** maze, size_t rows, size_t cols, size_t row, size_t col
             maze_up[row-1][col] = maze_up[row-1][col] == 'x' ? 'x' : 'o';
 
             char ** result = solve_rec(maze_up, rows, cols, row-1, col);
+            free(maze_up);
             if (result != NULL)
                 return result;
-            else
-                free(maze_up);
         }
 
         if (col+1 < cols && (maze[row][col+1] == ' ' || maze[row][col+1] == 'x'))
@@ -181,21 +179,19 @@ char ** solve_rec(char ** maze, size_t rows, size_t cols, size_t row, size_t col
             maze_right[row][col+1] = maze_right[row][col+1] == 'x' ? 'x' : 'o';
 
             char ** result = solve_rec(maze_right, rows, cols, row, col+1);
+            free(maze_right);
             if (result != NULL)
                 return result;
-            else
-                free(maze_right);
         }
         if (col > 0 && (maze[row][col-1] == ' ' || maze[row][col-1] == 'x'))
         {
             char ** maze_left = copy_maze(maze, rows, cols);
             maze_left[row][col-1] = maze_left[row][col-1] == 'x' ? 'x' : 'o';
-
             char ** result = solve_rec(maze_left, rows, cols, row, col-1);
+
+            free(maze_left);
             if (result != NULL)
                 return result;
-            else
-                free(maze_left);
         }
         
         return NULL;
