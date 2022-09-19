@@ -49,16 +49,16 @@ int main(int argc, char *argv[])
         printf("Reading maze %s ...\n", argv[1]);
         char ** maze = read_file(argv[1], &rows, &cols);
         print_maze(maze, rows, cols);
-
-        printf("Resolving the maze ...\n");
-        char ** resolved = solve(maze, rows, cols);
-        if (resolved == NULL)
+        if (!solve(maze, rows, cols))
             printf("Unable to find a valid path to resolve this maze\n");
         else
         {
             printf("The maze can be resolved :\n");
-            print_maze(resolved, rows, cols);
+            print_maze(maze, rows, cols);
         }
+        for (size_t i = 0; i < rows; i++)
+            free(maze[i]);
+        free(maze);
         
         return EXIT_SUCCESS;
     }

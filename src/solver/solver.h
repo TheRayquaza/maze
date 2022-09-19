@@ -33,10 +33,10 @@ void find_exit(char ** maze, size_t rows, size_t cols, size_t * row, size_t * co
 int is_solved(char ** maze, size_t rows, size_t cols);
 
 // Solver of the maze
-char ** solve(char ** maze, size_t rows, size_t cols);
+int solve(char ** maze, size_t rows, size_t cols);
 
 // Solver recursive
-char ** solve_rec(char ** maze, size_t rows, size_t cols, size_t row, size_t col);
+int solve_rec(char ** maze, size_t rows, size_t cols, size_t row, size_t col);
 
 #endif 
 
