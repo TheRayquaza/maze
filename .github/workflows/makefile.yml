@@ -1,0 +1,35 @@
+name: Maze
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install dependencies
+      run: |
+          sudo apt install meson
+           sudo apt install ninja-build          
+           sudo apt install cmake
+           sudo apt install pkg-config
+           sudo apt install libffi-dev
+           sudo apt install libgit2-dev
+           git clone --recursive https://github.com/Snaipe/Criterion
+           cd Criterion
+           meson build
+           sudo ninja -C build install
+           sudo ldconfig
+           cd ..
+           sudo rm -rf Criterion
+           make maze
+      
+    - name: Run tests
+      run: make test_criterion
