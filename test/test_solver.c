@@ -19,7 +19,6 @@
 #include <criterion/criterion.h>
 #include <criterion/hooks.h>
 
-#include "testing_tools.h"
 #include "../src/solver/solver.h"
 #include "../src/reader/reader.h"
 
