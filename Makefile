@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra -O3 -std=c99 -g -fsanitize=address
 
 SRC= src/reader/reader.c src/solver/solver.c src/tools/tools.c src/generator/generator.c 
-TEST= test/test_solver.c test/testing_tools.c
+TEST= test/test_solver.c
 
 all : maze test_criterion
 	./test_criterion
